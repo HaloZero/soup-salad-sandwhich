@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_045318) do
+ActiveRecord::Schema.define(version: 2018_11_05_061048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(version: 2018_11_05_045318) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "session_id"
     t.index ["photo_id"], name: "index_votes_on_photo_id"
+    t.index ["session_id"], name: "index_votes_on_session_id"
   end
 
   add_foreign_key "votes", "photos"

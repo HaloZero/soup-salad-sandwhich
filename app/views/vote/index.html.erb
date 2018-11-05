@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="row">
+		<h1>What is this food?</h1>
+		<% if @photo.name %> 
+			<h2>Food: <%= @photo.name %></h2>
+		<% end %>
+	</div>
+	<div class="row">		
+		<img style="height: 250px; width: 250px" src=<%= @photo.url %>></img>
+	</div>
+	<br>
+	<div class="row">
+		<form>
+			<input id="photo_id" type="hidden" value=<%= @photo.id %>>
+			<button name="type" value="salad">Salad</button>
+			<button name="type" value="sandwhich">Sandwhich</button>
+			<button name="type" value="soup">Soup</button>
+		</form>
+	</div>
+</div>
