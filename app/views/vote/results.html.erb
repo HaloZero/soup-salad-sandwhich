@@ -1,0 +1,14 @@
+<div class="container">
+	<% for result in @results do %> 
+		<div class="row">
+			<div class="col">
+				<img style="height: 250px; width: 250px" src=<%= result[:photo_url] %>></img>
+			</div>
+			<div class="col">
+				<div><%= "Soup is #{result[:soup]}" %></div>
+				<div><%= "Sandwhich is #{result[:sandwhich]}" %></div>
+				<div><%= "Salad is #{result[:salad]}" %></div>
+			</div>
+		</div>
+	<% end %> 
+</div>
