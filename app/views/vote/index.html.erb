@@ -1,4 +1,10 @@
 <div class="container">
+	<% if @photo == nil %>
+	<div class="row">
+		<h2> We're out of photos for you to vote on</h2>
+	</div>
+	<% end %>
+	<% if @photo != nil %>
 	<div class="row">
 		<h1>What is this food?</h1>
 		<% if @photo.name %> 
@@ -10,11 +16,12 @@
 	</div>
 	<br>
 	<div class="row">
-		<form>
-			<input id="photo_id" type="hidden" value=<%= @photo.id %>>
+		<div id="voting-form">
+			<input id="photo-id" type="hidden" value=<%= @photo.id %>>
 			<button name="type" value="salad">Salad</button>
 			<button name="type" value="sandwhich">Sandwhich</button>
 			<button name="type" value="soup">Soup</button>
-		</form>
+		</div>
 	</div>
+	<% end %>
 </div>

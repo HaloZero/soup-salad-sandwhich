@@ -10,7 +10,26 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require activestorage
-//= require turbolinks
 //= require_tree .
+
+$(function () {
+	var token = $( 'meta[name="csrf-token"]' ).attr( 'content' );
+
+	$.ajaxSetup( {
+	  beforeSend: function ( xhr ) {
+		xhr.setRequestHeader( 'X-CSRF-Token', token );
+	  }
+	});
+});
+
+$(function () {
+	$("#voting-form button").bind('click', function (e) {
+		var params = {
+			'photo_id': $("#photo-id").val(), 
+			'food_type': $(e.target).val()
+		}
+		$.post('/vote', params, function (data) {
+			location.reload();
+		});
+	});
+});
