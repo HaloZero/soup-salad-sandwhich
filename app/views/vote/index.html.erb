@@ -11,8 +11,8 @@
 			<h2>Food: <%= @photo.name %></h2>
 		<% end %>
 	</div>
-	<div class="row">		
-		<img style="height: 250px; width: 250px" src=<%= @photo.url %>></img>
+	<div class="row">
+		<img style="height: 250px; width: 250px" src=<%= asset_url(@photo.image_url) %>></img>
 	</div>
 	<br>
 	<div class="row">
