@@ -1,23 +1,23 @@
 <div class="container">
-	<% if @photo == nil %>
+	<% if @food_name == nil %>
 	<div class="row">
 		<h2> We're out of photos for you to vote on</h2>
 	</div>
 	<% end %>
-	<% if @photo != nil %>
+	<% if @food_name != nil %>
 	<div class="row">
-		<h1>What is this food?</h1>
-		<% if @photo.name %> 
-			<h2>Food: <%= @photo.name %></h2>
-		<% end %>
+		<h1>What is this food?</h1><br>
 	</div>
 	<div class="row">
-		<img style="height: 250px; width: 250px" src=<%= asset_url(@photo.image_url) %>></img>
+		<img style="height: 300px; width: 300px" src=<%= @photo_url %>></img>
+	</div>
+	<div class="row">
+		<span>Photo by <a href="<%= @photographer_url %>"><%= @photographer_name %></a> on <a href="https://unsplash.com/?utm_source=soup_salad_sandhwhich&utm_medium=referral">Unsplash</a></span>
 	</div>
 	<br>
 	<div class="row">
 		<div id="voting-form">
-			<input id="photo-id" type="hidden" value=<%= @photo.id %>>
+			<input id="food_name" type="hidden" value=<%= @food_name %>>
 			<button name="type" value="salad">Salad</button>
 			<button name="type" value="sandwhich">Sandwhich</button>
 			<button name="type" value="soup">Soup</button>

@@ -25,7 +25,7 @@ $(function () {
 $(function () {
 	$("#voting-form button").bind('click', function (e) {
 		var params = {
-			'photo_id': $("#photo-id").val(), 
+			'food_name': $("#food_name").val(), 
 			'food_type': $(e.target).val()
 		}
 		$.post('/vote', params, function (data) {

@@ -1,0 +1,2 @@
+class FoodVote < ApplicationRecord
+end
