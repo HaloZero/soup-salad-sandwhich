@@ -2,9 +2,9 @@ class VoteController < ApplicationController
 
 	def index()
 		session_id = session[:session_id]
-		@food_name = find_food_to_vote(session_id)
+		@food_name = _find_food_to_vote(session_id)
 		if @food_name != nil
-			search_results = find_food_images(@food_name)
+			search_results = _find_food_images(@food_name)
 			search_result = search_results.first
 			@photo_url = search_result.urls.full
 			@photographer_name = search_result.user.name
@@ -29,14 +29,41 @@ class VoteController < ApplicationController
 		end
 	end
 
-	def find_food_to_vote(session_id)
+	def results
+		votes = FoodVote.unscoped.all
+		food_names = Food.food_list
+		results = []
+		food_names.each do |food_name|
+			votes_for_food = votes.select { |v| v.name == food_name }
+			search_result = _find_food_images(food_name).first
+			photo_url = search_result.urls.full
+			vote_json = {
+				food: food_name,
+				photo_url: photo_url,
+				soup: votes_for_food.select { |v| v.food_type == 'soup' }.count,
+				sandwhich: votes_for_food.select { |v| v.food_type == 'sandwhich' }.count,
+				salad: votes_for_food.select { |v| v.food_type == 'salad' }.count,
+			}
+			results.append(vote_json)
+		end
+
+		@results = results
+	end
+
+	def _find_food_to_vote(session_id)
 		foods_voted = FoodVote.where(session_id: session_id).map { |x| x.name }
 		remaining_foods = Food.food_list.shuffle - foods_voted
 		return remaining_foods.first
 	end
 
-	def find_food_images(food_name)
+	def _find_food_images(food_name)
+		food_name_override = Food.food_search_overrides(food_name)
+		if food_name_override
+			food_name = food_name_override
+		end
+
 		food_name = food_name.gsub("_", " ")
+
 		search_results = Rails.cache.read(food_name)
 		if search_results == nil
 			search_results = Unsplash::Photo.search(food_name)
