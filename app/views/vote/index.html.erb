@@ -9,17 +9,14 @@
 		<h1>What is this food?</h1><br>
 	</div>
 	<div class="row">
-		<img style="height: 300px; width: 300px" src=<%= @photo_url %>></img>
-	</div>
-	<div class="row">
-		<span>Photo by <a href="<%= @photographer_url %>"><%= @photographer_name %></a> on <a href="https://unsplash.com/?utm_source=soup_salad_sandhwhich&utm_medium=referral">Unsplash</a></span>
+		<%= @html_to_embed.html_safe %>
 	</div>
 	<br>
 	<div class="row">
 		<div id="voting-form">
 			<input id="food_name" type="hidden" value=<%= @food_name %>>
 			<button name="type" value="salad">Salad</button>
-			<button name="type" value="sandwhich">Sandwhich</button>
+			<button name="type" value="sandwich">Sandwich</button>
 			<button name="type" value="soup">Soup</button>
 		</div>
 	</div>

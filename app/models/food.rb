@@ -1,20 +1,51 @@
 class Food
-	def self.food_list
-		[
-			'spaghetti', 'cheeseburger', 'cinnamon_churro', 'ramen', 'chicken_wings',
-			'muffin', 'ice_cream', 'popcorn', 'chicken_taco',
-			'lasagna', 'poke_bowl', 'donut', 'crab_roll',
-			'pepperoni_pizza', 'apple_pie', 'nachos', 'fried_chicken', 'clam_chowder',
-			'macaroni_and_cheese', 'fortune_cookie', 'hot_dog', 'chocolate_chip_cookie',
-			'shish_kebab', 'cinnamon_bun',
-		]
-	end
-
-	# overrides so the search can get a better image
-	def self.food_search_overrides(food)
-		return
-		{
-			'cheeseburger': 'cheeseburger_bacon_bun'
-		}[food]
+	def self.food_mapping
+		{ 
+			'spaghetti' => 637214478,
+			'nachos' => 1149904863,
+			'cereal' => 182466618,
+			'apple pie' => 564727693,
+			'calzones' => 185250793,
+			'pizza' => 763156339,
+			'taco' => 1146906219,
+			'fruit cocktail' => 854055594,
+			'parfait' => 154925432,
+			'hot dog' => 143175178,
+			'cookie' => 174478330,
+			'grits' => 167155356,
+			'fajitas' => 184293186,
+			'jambalaya' => 166730750,
+			'biscuits and gravy' => 985132702,
+			'California roll' => 812964484,
+			'mac and cheese' => 890129560,
+			'cioppino' => 172163791,
+			'Peanut butter jelly' => 976934924,
+			'smores' => 839959034,
+			'blt' => 154917899,
+			'poke bowl' => 1069547356,
+			'corn dogs' => 183283382,
+			'bread pudding' => 155359449,
+			'ice cream sundae' => 116359492,
+			'crab cakes' => 135607125,
+			'clam chowder' => 538015607,
+			'xiao lin bao' => 640354996,
+			'perogi' => 108162035,
+			'ravioli' => 154961079,
+			'tamales' => 184327265,
+			'chili' => 889124274,
+			'deviled eggs' => 182174909,
+			'peach cobbler' => 110902139,
+			'butter chicken' => 531607993,
+			'gyro' => 180698997,
+			'bibimbap' => 183752521,
+			'briyani' => 815866748,
+			'poutine' => 154959976,
+			'fish and chips' => 182690390,
+			'kebab' => 171146323,
+			'paella' => 155597348,
+			'masala dosa' => 1095585614,
+			'ramen' => 680268190,
+			'egg roll' => 922650052,
+		}
 	end
 end
